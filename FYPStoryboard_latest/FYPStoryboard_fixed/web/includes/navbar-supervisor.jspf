@@ -1,0 +1,31 @@
+<%@ page import="model.entity.Users" %>
+<%
+  Users navUser = (Users) session.getAttribute("user");
+  String navName = (navUser != null && navUser.getUser_name() != null) ? navUser.getUser_name() : "Supervisor";
+%>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom" style="box-shadow: 0 10px 25px rgba(2,6,23,0.08);">
+  <!-- Keep navbar stable even on legacy pages that redefine .container in css/style.css -->
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold" href="supervisorDashboard">
+      <img src="images/fyp-logo.png" alt="FYP Storyboard" class="app-logo-small">
+      <span>FYP Storyboard</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navSupervisor" aria-controls="navSupervisor" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navSupervisor">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="supervisorDashboard"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="supervisorStudents"><i class="bi bi-people me-1"></i>Students</a></li>
+        <li class="nav-item"><a class="nav-link" href="supervisorProject"><i class="bi bi-kanban me-1"></i>Projects</a></li>
+        <!-- Progress landing page removed (use Open Submissions inside project details) -->
+        <li class="nav-item"><a class="nav-link" href="supervisorProfile"><i class="bi bi-person-circle me-1"></i>Profile</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-3">
+        <span class="text-muted small d-none d-lg-inline">Hi, <span class="text-dark fw-semibold"><%= navName %></span></span>
+        <a class="btn btn-outline-primary btn-sm" href="logout"><i class="bi bi-box-arrow-right me-1"></i>Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>

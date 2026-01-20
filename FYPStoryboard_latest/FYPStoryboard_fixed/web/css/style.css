@@ -1,0 +1,458 @@
+/*
+  FYP Storyboard - WOW UI (NetBeans Validator Clean)
+  - No CSS variables
+  - No position: sticky
+  - No min()/max()/clamp()/calc()
+  - No backdrop-filter
+  - No prefers-reduced-motion
+  - No grid/minmax/auto-fit
+*/
+
+/* ===== Reset-ish ===== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  color: #0f172a;
+
+  /* Light, modern background (not "all black") */
+  background-color: #eef6ff;
+  background-image: url("../images/bg.svg"), linear-gradient(#eaf2ff, #f8fafc);
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-position: center, center;
+
+  /* If you want "fixed" feel without background-attachment: fixed */
+}
+
+/* Links */
+a { color: #4f46e5; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ===== Page Title ===== */
+.page-title-wrap {
+  width: 100%;
+  text-align: center;
+  margin: 28px 0 18px;
+  padding: 0 16px;
+  position: relative;
+}
+
+/* Optional action on the page header (e.g., Back button) */
+.page-actions {
+  position: absolute;
+  right: 16px;
+  top: 0;
+}
+
+/* Shift the header Back button slightly left (as per UI mockups) */
+.header-back-offset .page-actions {
+  right: 180px;
+  top: 6px;
+}
+
+@media (max-width: 900px) {
+  .header-back-offset .page-actions {
+    right: 16px;
+    top: 0;
+  }
+}
+
+.page-actions .btn {
+  margin: 0;
+  padding: 10px 14px;
+}
+.page-title-wrap h1 {
+  margin: 0 0 8px;
+  font-size: 34px;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  text-shadow: 0 10px 30px rgba(2,6,23,0.10);
+}
+.subtitle {
+  color: #475569;
+  margin: 0;
+  font-size: 16px;
+}
+
+/* ===== Back button aligned to the top-right of the white container ===== */
+.has-top-action { position: relative; }
+.has-top-action .top-action {
+  position: absolute;
+  right: 0;
+  top: -56px;
+  z-index: 5;
+}
+
+@media (max-width: 700px) {
+  .has-top-action .top-action {
+    top: -48px;
+  }
+}
+
+h2, h3 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+/* ===== Simple Navigation Bar (legacy pages only) ===== */
+.simple-nav {
+  position: fixed;     /* replace sticky */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+
+  padding: 14px 18px;
+
+  /* Clean, app-like top bar */
+  background: rgba(255,255,255,0.96);
+  border-bottom: 1px solid rgba(15,23,42,0.10);
+  box-shadow: 0 10px 25px rgba(2,6,23,0.08);
+
+  /* Keep links inline */
+  white-space: nowrap;
+}
+
+/*
+  IMPORTANT:
+  This stylesheet originally targeted legacy pages that used a fixed `.simple-nav`.
+  A global `body { padding-top: 64px; }` makes the newer Bootstrap navbar (not fixed)
+  look like it has a blank gap above it.
+
+  Apply the top offset ONLY when a page explicitly opts-in.
+  (If you ever use `.simple-nav` again, add `class="simple-nav-page"` to <body>.)
+*/
+body { margin: 0; padding-top: 0; }
+body.simple-nav-page { padding-top: 64px; }
+
+.simple-nav a {
+  color: rgba(15,23,42,0.78);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+
+  padding: 8px 12px;
+  border-radius: 10px;
+
+  display: inline-block;
+  margin-right: 6px;
+
+  /* no transition */
+}
+
+.simple-nav a:hover {
+  color: #0f172a;
+  background: rgba(79,70,229,0.10);
+  text-decoration: none;
+}
+
+/* ===== Container Card ===== */
+.container {
+  text-align: center;
+
+  width: 92%;
+  max-width: 980px;
+
+  margin: 18px auto 42px;
+  padding: 22px;
+
+  border-radius: 16px;
+
+  /* Glass-ish surface without vars/backdrop-filter */
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(15,23,42,0.10);
+
+  box-shadow: 0 18px 45px rgba(2,6,23,0.12);
+
+  /* Global fix: prevent long words from overflowing outside the container */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.container.left { text-align: left; }
+
+.container .subtitle {
+  color: #475569;
+  margin: 0 0 16px;
+}
+
+/* ===== Notice ===== */
+.notice {
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(15,23,42,0.10);
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 10px 25px rgba(2,6,23,0.18);
+  font-size: 14px;
+
+  /* Global fix: keep long text inside notice box */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ===== Buttons ===== */
+/* Keep compatibility with both <a class="btn"> and <button>
+   (but don't override Bootstrap navbar toggler buttons) */
+.btn, button:not(.navbar-toggler):not(.btn-close),
+input[type="submit"],
+input[type="button"] {
+  border: none;
+  cursor: pointer;
+
+  display: inline-block;
+  padding: 11px 16px;
+
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+
+  color: #ffffff;
+
+  /* Blue like Bootstrap .btn-primary */
+  background: #0d6efd;
+  box-shadow: 0 16px 28px rgba(13,110,253,0.22);
+
+  margin: 8px 0;
+}
+
+.btn:hover, button:not(.navbar-toggler):not(.btn-close):hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  background: #0b5ed7;
+  filter: brightness(1.01);
+}
+
+/* Secondary link */
+.small-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+
+  padding: 8px 12px;
+  border-radius: 10px;
+
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.small-link:hover {
+  color: #ffffff;
+  background: rgba(255,255,255,0.14);
+  text-decoration: none;
+}
+
+/* When small-link is inside container */
+.container .small-link {
+  color: #4f46e5;
+  background: rgba(79,70,229,0.10);
+  border: 1px solid rgba(79,70,229,0.25);
+}
+.container .small-link:hover {
+  color: #ffffff;
+  background: #4f46e5;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  border-color: transparent;
+}
+
+/* ===== Forms ===== */
+form { width: 100%; }
+
+label {
+  font-weight: bold;
+  font-size: 13px;
+  color: #0f172a;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 12px 12px;
+
+  margin-top: 6px;
+  margin-bottom: 16px;
+
+  border: 1px solid rgba(15,23,42,0.14);
+  border-radius: 12px;
+
+  font-size: 14px;
+
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 10px 18px rgba(2,6,23,0.06);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: rgba(79,70,229,0.55);
+  /* replace var(--ring) */
+  box-shadow: 0 0 0 4px rgba(79,70,229,0.35);
+}
+
+textarea {
+  height: 110px; /* replace min-height */
+  resize: vertical;
+}
+
+/* ===== Tables (card table) ===== */
+.table-wrap { width: 100%; overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+
+  /* Global fix: keep long words/sentences inside the table and container */
+  table-layout: fixed;
+
+  background: rgba(255,255,255,0.90);
+  border: 1px solid rgba(15,23,42,0.10);
+
+  border-radius: 14px; /* note: radius may not clip without overflow; ok */
+}
+
+table th {
+  background: #4f46e5;
+  background: linear-gradient(135deg, rgba(79,70,229,0.95), rgba(6,182,212,0.90));
+  color: #ffffff;
+
+  padding: 12px 14px;
+  font-size: 13px;
+  text-align: left;
+  letter-spacing: 0.01em;
+
+  white-space: nowrap;
+
+  /* Keep long headers inside their column */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+table td {
+  padding: 12px 14px;
+  border-top: 1px solid rgba(15,23,42,0.08);
+  font-size: 14px;
+  color: #0f172a;
+
+  /* Keep long words/sentences inside the cell (prevents overflow outside the box) */
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+
+  /* Let rows grow in height instead of overflowing outside the box */
+}
+
+/* Global fix: also prevent long unbroken text inside cards/notices */
+.container, .card, .notice {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+table tr:nth-child(even) td {
+  background: rgba(2,6,23,0.02);
+}
+
+/* ===== Notes Taking: keep long content inside the box ===== */
+/*
+   Your global table header uses white-space: nowrap; which is fine for most pages,
+   but Notes content can be very long (including long words without spaces).
+   These rules force a fixed table layout and enable wrapping only for the notes page.
+*/
+.notes-table {
+  width: 100% !important;
+  table-layout: fixed !important; /* stop long text from pushing other columns */
+}
+
+/* Column sizing to keep Date/Action stable */
+.notes-table th:nth-child(1),
+.notes-table td:nth-child(1) {
+  width: 64px;
+  text-align: center;
+}
+.notes-table th:nth-child(2),
+.notes-table td:nth-child(2) {
+  width: 200px;
+}
+.notes-table th:nth-child(4),
+.notes-table td:nth-child(4) {
+  width: 140px;
+  text-align: center;
+}
+.notes-table th:nth-child(5),
+.notes-table td:nth-child(5) {
+  width: 220px;
+  text-align: center;
+}
+
+/* Allow ONLY the content cell to wrap (override any global nowrap) */
+.notes-table .notes-content {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+/* Keep action buttons inside the cell */
+.notes-table .notes-actions {
+  white-space: normal !important;
+}
+.notes-table .notes-actions a,
+.notes-table .notes-actions button {
+  display: inline-block;
+  margin: 4px 6px;
+}
+
+/* ===== Utility Cards (safe) ===== */
+.card {
+  background: rgba(255,255,255,0.88);
+  border: 1px solid rgba(15,23,42,0.10);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 18px 35px rgba(2,6,23,0.10);
+
+  /* Global fix: keep long text inside cards */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ===== Badges ===== */
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+
+  border: 1px solid rgba(15,23,42,0.10);
+  background: rgba(255,255,255,0.75);
+  color: #0f172a;
+}
+
+.badge.success { background: rgba(34,197,94,0.12); border-color: rgba(34,197,94,0.25); }
+.badge.warning { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.25); }
+.badge.danger  { background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.25); }
+
+/* ===== Mobile polish (simple, validator safe) ===== */
+@media screen and (max-width: 600px) {
+  .simple-nav { white-space: normal; }
+  .container { padding: 18px; }
+}
+
+/* ===== High Contrast (optional) ===== */
+body.high-contrast { background: #000; }
+body.high-contrast .simple-nav {
+  background: #000;
+  border-bottom: 2px solid #fff;
+}
+body.high-contrast .simple-nav a { color: #fff; }
+body.high-contrast .container {
+  background: #fff;
+  border: 2px solid #000;
+}
+body.high-contrast .container .subtitle { color: #111; }

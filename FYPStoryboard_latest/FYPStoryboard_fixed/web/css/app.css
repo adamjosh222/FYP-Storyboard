@@ -1,0 +1,106 @@
+/* WOW UI - NetBeans clean version (no :root vars, no var()) */
+
+html, body{ margin: 0; padding: 0; }
+
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+
+  /* Background image + soft gradient */
+  background-color: #eef6ff;
+  background-image: url("../images/bg.svg"), linear-gradient(180deg, #eaf2ff, #f8fafc);
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-position: center, center;
+
+  min-height: 100vh;
+}
+
+/* Keep main content readable on dark background */
+.page-wrap{
+  padding: 2rem 0 1.5rem;
+}
+
+/* Replace var(--app-card-shadow) with fixed shadow */
+.card.app-card{
+  box-shadow: 0 18px 45px rgba(2,6,23,.18);
+  border: 0;
+}
+
+.app-title{ color: #0f172a; font-size: 34px; font-weight: 800; letter-spacing: -0.02em; }
+.app-subtitle{ color: rgba(15,23,42,.65); font-size: 16px; }
+
+/* Logo helpers (keeps the logo perfectly round) */
+.app-logo-small{
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.app-logo-main{
+  width: 100px;
+  height: 100px;
+  border-radius: 9999px;
+  object-fit: cover;
+  margin-bottom: 16px;
+  box-shadow: 0 12px 28px rgba(2,6,23,.18);
+}
+
+/* Bigger emphasis for "Final Year Project (FYP)" on the login page */
+.fyp-subtitle{
+  font-size: 22px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+/* Navbar polish */
+.navbar .navbar-brand{ display:flex; align-items:center; gap:10px; }
+.navbar .nav-link{ border-radius: 12px; padding: 8px 12px; }
+.navbar .nav-link:hover{ background: rgba(79,70,229,0.10); }
+.navbar .nav-link.active{ background: rgba(79,70,229,0.14); }
+
+/* Footer (decorative, no text) */
+.app-footer{ background: transparent; padding: 0; }
+.app-footer .footer-pad{ height: 10px; }
+.app-footer .footer-wave{
+  display: block;
+  width: 100%;
+  height: 90px;
+  filter: drop-shadow(0 -10px 18px rgba(2,6,23,.08));
+}
+
+/* Make app cards equal height in Bootstrap grid */
+.app-card.h-100{ height: 100%; }
+
+.form-label{ font-weight: 600; }
+.table thead th{ white-space: nowrap; }
+.badge{ letter-spacing: .2px; }
+
+/* Make all buttons consistent (blue like Bootstrap .btn-primary) */
+.btn{
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: #fff;
+}
+.btn:hover{
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+  color: #fff;
+}
+.btn:focus{
+  box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+}
+.btn:active,
+.btn.active{
+  background-color: #0a58ca;
+  border-color: #0a53be;
+  color: #fff;
+}
+.btn:disabled,
+.btn.disabled{
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  opacity: .65;
+}
